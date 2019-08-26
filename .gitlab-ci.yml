@@ -1,0 +1,17 @@
+send_job:
+  before_script:
+    - apt-get update -qq && apt-get install -y sshpass
+  script:
+    - pwd
+    - ls -a
+    # 此处进行编译、构建等操作
+
+  after_script:
+    - echo "after script..."
+    - echo "gitlab ssh check" > file.txt # 临时文件
+    - echo "$PASSWD" $PASSWD $HOST
+    - sshpass -p "$PASSWD" ssh -o StrictHostKeyChecking=no $USER@$HOST "uname -a > /tmp/foo"
+    - sshpass -p $PASSWD scp -o StrictHostKeyChecking=no file.txt $USER@$HOST:/tmp/
+    - echo $?    
+  only:
+    - master
