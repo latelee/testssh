@@ -205,7 +205,7 @@ fi
 echo "  (to override, set KUBERNETES_CLIENT_OS and/or KUBERNETES_CLIENT_ARCH)"
 echo
 
-echo "Will download ${SERVER_TAR} from ${DOWNLOAD_URL_PREFIX}"
+echo "Will download ${SERVER_TAR} from ${DOWNLOAD_URL_PREFIX} name: ${SERVER_TAR} ${NODE_TAR} ${CLIENT_TAR}"
 echo "Will download and extract ${CLIENT_TAR} from ${DOWNLOAD_URL_PREFIX}"
 
 DOWNLOAD_NODE_TAR=false
