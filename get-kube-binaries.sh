@@ -147,6 +147,7 @@ function download_tarball() {
   local -r download_path="$1"
   local -r file="$2"
   url="${DOWNLOAD_URL_PREFIX}/${file}"
+  echo "url: ${url}"
   mkdir -p "${download_path}"
   if [[ $(which curl) ]]; then
     curl -fL --retry 3 --keepalive-time 2 "${url}" -o "${download_path}/${file}"
@@ -205,7 +206,8 @@ fi
 echo "  (to override, set KUBERNETES_CLIENT_OS and/or KUBERNETES_CLIENT_ARCH)"
 echo
 
-echo "111 Will download ${SERVER_TAR} from ${DOWNLOAD_URL_PREFIX} name: ${SERVER_TAR} ${NODE_TAR} ${CLIENT_TAR}"
+echo "name: ${SERVER_TAR} ${NODE_TAR} ${CLIENT_TAR}"
+echo "111 Will download ${SERVER_TAR} from ${DOWNLOAD_URL_PREFIX}"
 echo "222 Will download and extract ${CLIENT_TAR} from ${DOWNLOAD_URL_PREFIX}"
 
 DOWNLOAD_NODE_TAR=false
