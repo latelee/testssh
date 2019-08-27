@@ -202,7 +202,7 @@ if [[ -r "${PWD}/${file}" ]]; then
 fi
 
 if "${need_download}"; then
-  echo "Downloading kubernetes release ${KUBE_VERSION}"
+  echo "latelee Downloading kubernetes release ${KUBE_VERSION}"
   echo "  from ${kubernetes_tar_url}"
   echo "  to ${PWD}/${file}"
 fi
