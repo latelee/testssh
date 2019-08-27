@@ -130,7 +130,8 @@ fi
 if [[ -d "./kubernetes" ]]; then
   if [[ -z "${KUBERNETES_SKIP_CONFIRM-}" ]]; then
     echo "'kubernetes' directory already exist. Should we skip download step and start to create cluster based on it? [Y]/n"
-    read -r confirm
+    #read -r confirm
+    confirm='y'
     if [[ ! "${confirm}" =~ ^[nN]$ ]]; then
       echo "Skipping download step."
       create_cluster
@@ -219,7 +220,7 @@ fi
 
 if [[ -z "${KUBERNETES_SKIP_CONFIRM-}" ]]; then
   echo "Is this ok? [Y]/n"
-  read -r confirm
+  confirm='y'
   if [[ "${confirm}" =~ ^[nN]$ ]]; then
     echo "Aborting."
     exit 0

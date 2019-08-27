@@ -222,7 +222,8 @@ fi
 
 if [[ -z "${KUBERNETES_SKIP_CONFIRM-}" ]]; then
   echo "Is this ok? [Y]/n"
-  read -r confirm
+  #read -r confirm
+  confirm='y'
   if [[ "${confirm}" =~ ^[nN]$ ]]; then
     echo "Aborting."
     exit 1
