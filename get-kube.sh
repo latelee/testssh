@@ -97,6 +97,7 @@ function set_binary_version() {
 function download_kube_binaries {
   (
     cd kubernetes
+    cp ../get-kube-binaries.sh ./cluster/get-kube-binaries.sh
     if [[ -x ./cluster/get-kube-binaries.sh ]]; then
       # Make sure to use the same download URL in get-kube-binaries.sh
       KUBERNETES_RELEASE_URL="${KUBERNETES_RELEASE_URL}" \
