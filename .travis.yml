@@ -13,6 +13,7 @@ script:
     - pwd
     - ls -a
     - export K8S_VERSION="v1.15.3"
+    - mkdir k8sdir && cd k8sdir
     - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-server-linux-amd64.tar.gz
     - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-client-linux-amd64.tar.gz
     - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-node-linux-arm64.tar.gz
@@ -28,7 +29,6 @@ script:
 after_script:
     # 此处进行部署等操作
     - echo "after script..."
-    #- echo "ssh check" > file.txt # 临时文件
-    #- sshpass -p "${PASSWD}" ssh -o StrictHostKeyChecking=no ${USER}@${HOST} "uname -a > /tmp/foo"
-    #- sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no file.txt ${USER}@${HOST}:/tmp/
+    - echo "copying files to server"
+    - sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no -r k8sdir ${USER}@${HOST}:/tmp/
     #- echo $?
