@@ -1,0 +1,24 @@
+language: node_js
+node_js: stable
+cache:
+    apt: true
+    directories:
+        - node_modules
+sudo: required
+git:
+    quiet: true
+install:
+    - sudo apt-get install -y sshpass
+script:
+    - pwd
+    - ls -a
+    - wget -c -q https://dl.k8s.io/v1.15.13/kubernetes-server-linux-amd64.tar.gz
+    # 此处进行编译、构建等操作
+
+after_script:
+    # 此处进行部署等操作
+    - echo "after script..."
+    #- echo "ssh check" > file.txt # 临时文件
+    #- sshpass -p "${PASSWD}" ssh -o StrictHostKeyChecking=no ${USER}@${HOST} "uname -a > /tmp/foo"
+    #- sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no file.txt ${USER}@${HOST}:/tmp/
+    #- echo $?
