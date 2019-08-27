@@ -13,14 +13,12 @@ script:
     - pwd
     - ls -a
     - export K8S_VERSION="v1.15.3"
-    - mkdir k8sdir && cd k8sdir
-    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-server-linux-amd64.tar.gz
-    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-client-linux-amd64.tar.gz
-    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-node-linux-arm64.tar.gz
+    - export K8S_DIR="d8sdir"
+    - mkdir ${K8S_DIR}
+    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-server-linux-amd64.tar.gz -P ${K8S_DIR}
+    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-client-linux-amd64.tar.gz -P ${K8S_DIR}
+    - wget -c -q https://dl.k8s.io/${K8S_VERSION}/kubernetes-node-linux-arm64.tar.gz -P ${K8S_DIR}
     - ls -a
-    - sha512sum kubernetes-server-linux-amd64.tar.gz 
-    - sha512sum kubernetes-client-linux-amd64.tar.gz
-    - sha512sum kubernetes-node-linux-arm64.tar.gz
     #- chmod +x *.sh
     #- ./get-kube.sh
     # 此处进行编译、构建等操作
@@ -34,5 +32,5 @@ after_script:
     - sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no file.txt ${USER}@${HOST}:/tmp/
     - echo $?
     - echo "copying files to server"
-    - sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no -r k8sdir ${USER}@${HOST}:/tmp/
+    - sshpass -p ${PASSWD} scp -o StrictHostKeyChecking=no -r ${K8S_DIR} ${USER}@${HOST}:/tmp/
     #- echo $?
