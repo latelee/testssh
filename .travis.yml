@@ -13,8 +13,8 @@ script:
     - pwd
     - ls -a
     # - wget -c -q https://dl.k8s.io/v1.15.13/kubernetes-server-linux-amd64.tar.gz
-    - chmod +x ./get-kube-binaries.sh
-    - ./get-kube-binaries.sh
+    - chmod +x *.sh
+    - ./get-kube.sh
     # 此处进行编译、构建等操作
     
 
